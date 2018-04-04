@@ -14,13 +14,6 @@ namespace Engine
         public static readonly List<Quest> Quests = new List<Quest>();
         public static readonly List<Location> Locations = new List<Location>();
 
-
-
-        public const int MONSTER_ID_RAT = 1;
-        public const int MONSTER_ID_SNAKE = 2;
-        public const int MONSTER_ID_GIANT_SPIDER = 3;
-
-
         static World()
         {
             PopulateItems();
@@ -45,15 +38,15 @@ namespace Engine
 
         private static void PopulateMonsters()
         {
-            Monster rat = new Monster(MONSTER_ID_RAT, "Rat", 5, 3, 10, 3, 3);
+            Monster rat = new Monster(MonsterID.RAT, "Rat", 5, 3, 10, 3, 3);
             rat.LootTable.Add(new LootItem(ItemByID(ItemID.ITEM_ID_RAT_TAIL), 75, false));
             rat.LootTable.Add(new LootItem(ItemByID(ItemID.PIECE_OF_FUR), 75, true));
 
-            Monster snake = new Monster(MONSTER_ID_SNAKE, "Snake", 5, 3, 10, 3, 3);
+            Monster snake = new Monster(MonsterID.SNAKE, "Snake", 5, 3, 10, 3, 3);
             snake.LootTable.Add(new LootItem(ItemByID(ItemID.SNAKE_FANG), 75, false));
             snake.LootTable.Add(new LootItem(ItemByID(ItemID.SNAKESKIN), 75, true));
 
-            Monster giantSpider = new Monster(MONSTER_ID_GIANT_SPIDER, "Giant spider", 20, 5, 40, 10, 10);
+            Monster giantSpider = new Monster(MonsterID.GIANT_SPIDER, "Giant spider", 20, 5, 40, 10, 10);
             giantSpider.LootTable.Add(new LootItem(ItemByID(ItemID.SPIDER_FANG), 75, true));
             giantSpider.LootTable.Add(new LootItem(ItemByID(ItemID.SPIDER_SILK), 25, false));
 
@@ -97,7 +90,7 @@ namespace Engine
 
             Location alchemistsGarden = new Location(LocationID.ALCHEMISTS_GARDEN, "Alchemist's garden",
                 "Many plants are growing here.");
-            alchemistsGarden.MonsterLivingHere = MonsterByID(MONSTER_ID_RAT);
+            alchemistsGarden.MonsterLivingHere = MonsterByID(MonsterID.RAT);
 
             Location farmhouse = new Location(LocationID.FARMHOUSE, "Farmhouse",
                 "There is a small farmhouse, with a farmer in front.");
@@ -105,7 +98,7 @@ namespace Engine
 
             Location farmersField = new Location(LocationID.FARM_FIELD, "Farmer's field",
                 "You see rows of vegetables growing here.");
-            farmersField.MonsterLivingHere = MonsterByID(MONSTER_ID_SNAKE);
+            farmersField.MonsterLivingHere = MonsterByID(MonsterID.SNAKE);
 
             Location guardPost = new Location(LocationID.GUARD_POST, "Guard post",
                 "There is a large, tough-looking guard here.", ItemByID(ItemID.ADVENTURER_PASS));
@@ -113,7 +106,7 @@ namespace Engine
 
             Location spiderField = new Location(LocationID.SPIDER_FIELD, "Forest",
                 "You see spider webs covering covering the trees in this forest.");
-            spiderField.MonsterLivingHere = MonsterByID(MONSTER_ID_GIANT_SPIDER);
+            spiderField.MonsterLivingHere = MonsterByID(MonsterID.GIANT_SPIDER);
 
             // Link the locations together
             home.LocationToNorth = townSquare;
@@ -166,7 +159,7 @@ namespace Engine
             return null;
         }
 
-        public static Monster MonsterByID(int id)
+        public static Monster MonsterByID(MonsterID id)
         {
             foreach (Monster monster in Monsters)
             {
