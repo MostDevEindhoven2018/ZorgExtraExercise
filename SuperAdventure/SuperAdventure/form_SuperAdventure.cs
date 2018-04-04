@@ -29,8 +29,8 @@ namespace SuperAdventure
             lbl_lvl.Text = _player.Level.ToString();
 
             { //example lines
-                _player.Inventory.Add(new InventoryItem(new Item(ItemID.Invalid, "itemName", "itemNames"), 1));
-                _player.Inventory.Add(new InventoryItem(new Item(ItemID.Invalid, "otheritemName", "itemNames"), 4));
+                _player.Inventory.Add(new InventoryItem(new Item(ItemID.INVALID, "itemName", "itemNames"), 1));
+                _player.Inventory.Add(new InventoryItem(new Item(ItemID.INVALID, "otheritemName", "itemNames"), 4));
             }
             cbo_potions.DataSource = _player.Inventory;
 
