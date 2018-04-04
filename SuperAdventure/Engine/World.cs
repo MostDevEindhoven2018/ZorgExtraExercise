@@ -9,10 +9,10 @@ namespace Engine
 {
     public static class World
     {
-        public static readonly List<Item> Items = new List<Item>();
-        public static readonly List<Monster> Monsters = new List<Monster>();
-        public static readonly List<Quest> Quests = new List<Quest>();
-        public static readonly List<Location> Locations = new List<Location>();
+        public static readonly Dictionary<ItemID, Item> Items = new Dictionary<ItemID, Item>();
+        public static readonly Dictionary<MonsterID, Monster> Monsters = new Dictionary<MonsterID, Monster>();
+        public static readonly Dictionary<QuestID, Quest> Quests = new Dictionary<QuestID, Quest>();
+        public static readonly Dictionary<LocationID, Location> Locations = new Dictionary<LocationID, Location>();
 
         static World()
         {
@@ -24,35 +24,56 @@ namespace Engine
 
         private static void PopulateItems()
         {
-            Items.Add(new Weapon(ItemID.RUSTY_SWORD, "Rusty sword", "Rusty swords", 0, 5));
-            Items.Add(new Item(ItemID.ITEM_ID_RAT_TAIL, "Rat tail", "Rat tails"));
-            Items.Add(new Item(ItemID.PIECE_OF_FUR, "Piece of fur", "Pieces of fur"));
-            Items.Add(new Item(ItemID.SNAKE_FANG, "Snake fang", "Snake fangs"));
-            Items.Add(new Item(ItemID.SNAKESKIN, "Snakeskin", "Snakeskins"));
-            Items.Add(new Weapon(ItemID.CLUB, "Club", "Clubs", 3, 10));
-            Items.Add(new HealingPotion(ItemID.HEALING_POTION, "Healing potion", "Healing potions", 5));
-            Items.Add(new Item(ItemID.SPIDER_FANG, "Spider fang", "Spider fangs"));
-            Items.Add(new Item(ItemID.SPIDER_SILK, "Spider silk", "Spider silks"));
-            Items.Add(new Item(ItemID.ADVENTURER_PASS, "Adventurer pass", "Adventurer passes"));
+            Item item = new Weapon(ItemID.RUSTY_SWORD, "Rusty sword", "Rusty swords", 0, 5);
+            Items.Add(item.ID, item);
+
+            item = new Item(ItemID.ITEM_ID_RAT_TAIL, "Rat tail", "Rat tails");
+            Items.Add(item.ID, item);
+
+            item = new Item(ItemID.PIECE_OF_FUR, "Piece of fur", "Pieces of fur");
+            Items.Add(item.ID, item);
+
+            item = (new Item(ItemID.SNAKE_FANG, "Snake fang", "Snake fangs"));
+            Items.Add(item.ID, item);
+
+            item = (new Item(ItemID.SNAKESKIN, "Snakeskin", "Snakeskins"));
+            Items.Add(item.ID, item);
+
+            item = (new Weapon(ItemID.CLUB, "Club", "Clubs", 3, 10));
+            Items.Add(item.ID, item);
+
+            item = (new HealingPotion(ItemID.HEALING_POTION, "Healing potion", "Healing potions", 5));
+            Items.Add(item.ID, item);
+
+            item = (new Item(ItemID.SPIDER_FANG, "Spider fang", "Spider fangs"));
+            Items.Add(item.ID, item);
+
+            item = (new Item(ItemID.SPIDER_SILK, "Spider silk", "Spider silks"));
+            Items.Add(item.ID, item);
+
+            item = (new Item(ItemID.ADVENTURER_PASS, "Adventurer pass", "Adventurer passes"));
+            Items.Add(item.ID, item);
+
         }
+
 
         private static void PopulateMonsters()
         {
             Monster rat = new Monster(MonsterID.RAT, "Rat", 5, 3, 10, 3, 3);
-            rat.LootTable.Add(new LootItem(ItemByID(ItemID.ITEM_ID_RAT_TAIL), 75, false));
-            rat.LootTable.Add(new LootItem(ItemByID(ItemID.PIECE_OF_FUR), 75, true));
+            rat.LootTable.Add(new LootItem(Items[(ItemID.ITEM_ID_RAT_TAIL)], 75, false));
+            rat.LootTable.Add(new LootItem(Items[(ItemID.PIECE_OF_FUR)], 75, true));
 
             Monster snake = new Monster(MonsterID.SNAKE, "Snake", 5, 3, 10, 3, 3);
-            snake.LootTable.Add(new LootItem(ItemByID(ItemID.SNAKE_FANG), 75, false));
-            snake.LootTable.Add(new LootItem(ItemByID(ItemID.SNAKESKIN), 75, true));
+            snake.LootTable.Add(new LootItem(Items[(ItemID.SNAKE_FANG)], 75, false));
+            snake.LootTable.Add(new LootItem(Items[(ItemID.SNAKESKIN)], 75, true));
 
             Monster giantSpider = new Monster(MonsterID.GIANT_SPIDER, "Giant spider", 20, 5, 40, 10, 10);
-            giantSpider.LootTable.Add(new LootItem(ItemByID(ItemID.SPIDER_FANG), 75, true));
-            giantSpider.LootTable.Add(new LootItem(ItemByID(ItemID.SPIDER_SILK), 25, false));
+            giantSpider.LootTable.Add(new LootItem(Items[(ItemID.SPIDER_FANG)], 75, true));
+            giantSpider.LootTable.Add(new LootItem(Items[(ItemID.SPIDER_SILK)], 25, false));
 
-            Monsters.Add(rat);
-            Monsters.Add(snake);
-            Monsters.Add(giantSpider);
+            Monsters.Add(rat.ID, rat);
+            Monsters.Add(snake.ID, snake);
+            Monsters.Add(giantSpider.ID, giantSpider);
         }
 
         private static void PopulateQuests()
@@ -61,20 +82,20 @@ namespace Engine
                 "Kill rats in the alchemist's garden and bring back 3 rat tails. You will receive a healing potion and 10 gold pieces.",
                 20, 10);
 
-            clearAlchemistGarden.QuestCompletionItems.Add(new QuestCompletionItem(ItemByID(ItemID.ITEM_ID_RAT_TAIL), 3));
+            clearAlchemistGarden.QuestCompletionItems.Add(new QuestCompletionItem(Items[(ItemID.ITEM_ID_RAT_TAIL)], 3));
 
-            clearAlchemistGarden.RewardItem = ItemByID(ItemID.HEALING_POTION);
+            clearAlchemistGarden.RewardItem = Items[(ItemID.HEALING_POTION)];
 
             Quest clearFarmersField = new Quest(QuestID.CLEAR_FARMERS_FIELD, "Clear the farmer's field",
                 "Kill snakes in the farmer's field and bring back 3 snake fangs. You will receive an adventurer's pass and 20 gold pieces.",
                 20, 20);
 
-            clearFarmersField.QuestCompletionItems.Add(new QuestCompletionItem(ItemByID(ItemID.SNAKE_FANG), 3));
+            clearFarmersField.QuestCompletionItems.Add(new QuestCompletionItem(Items[(ItemID.SNAKE_FANG)], 3));
 
-            clearFarmersField.RewardItem = ItemByID(ItemID.ADVENTURER_PASS);
+            clearFarmersField.RewardItem = Items[(ItemID.ADVENTURER_PASS)];
 
-            Quests.Add(clearAlchemistGarden);
-            Quests.Add(clearFarmersField);
+            Quests.Add(clearAlchemistGarden.ID, clearAlchemistGarden);
+            Quests.Add(clearFarmersField.ID, clearFarmersField);
         }
 
         private static void PopulateLocations()
@@ -86,27 +107,27 @@ namespace Engine
 
             Location alchemistHut = new Location(LocationID.ALCHEMIST_HUT, "Alchemist's hut",
                 "There are many strange plants on the shelves.");
-            alchemistHut.QuestAvailableHere = QuestByID(QuestID.CLEAR_ALCHEMIST_GARDEN);
+            alchemistHut.QuestAvailableHere = Quests[(QuestID.CLEAR_ALCHEMIST_GARDEN)];
 
             Location alchemistsGarden = new Location(LocationID.ALCHEMISTS_GARDEN, "Alchemist's garden",
                 "Many plants are growing here.");
-            alchemistsGarden.MonsterLivingHere = MonsterByID(MonsterID.RAT);
+            alchemistsGarden.MonsterLivingHere = Monsters[(MonsterID.RAT)];
 
             Location farmhouse = new Location(LocationID.FARMHOUSE, "Farmhouse",
                 "There is a small farmhouse, with a farmer in front.");
-            farmhouse.QuestAvailableHere = QuestByID(QuestID.CLEAR_FARMERS_FIELD);
+            farmhouse.QuestAvailableHere = Quests[(QuestID.CLEAR_FARMERS_FIELD)];
 
             Location farmersField = new Location(LocationID.FARM_FIELD, "Farmer's field",
                 "You see rows of vegetables growing here.");
-            farmersField.MonsterLivingHere = MonsterByID(MonsterID.SNAKE);
+            farmersField.MonsterLivingHere = Monsters[(MonsterID.SNAKE)];
 
             Location guardPost = new Location(LocationID.GUARD_POST, "Guard post",
-                "There is a large, tough-looking guard here.", ItemByID(ItemID.ADVENTURER_PASS));
+                "There is a large, tough-looking guard here.", Items[(ItemID.ADVENTURER_PASS)]);
             Location bridge = new Location(LocationID.BRIDGE, "Bridge", "A stone bridge crosses a wide river.");
 
             Location spiderField = new Location(LocationID.SPIDER_FIELD, "Forest",
                 "You see spider webs covering covering the trees in this forest.");
-            spiderField.MonsterLivingHere = MonsterByID(MonsterID.GIANT_SPIDER);
+            spiderField.MonsterLivingHere = Monsters[MonsterID.GIANT_SPIDER];
 
             // Link the locations together
             home.LocationToNorth = townSquare;
@@ -135,67 +156,15 @@ namespace Engine
             spiderField.LocationToWest = bridge;
 
             // Add the locations to the static list
-            Locations.Add(home);
-            Locations.Add(townSquare);
-            Locations.Add(guardPost);
-            Locations.Add(alchemistHut);
-            Locations.Add(alchemistsGarden);
-            Locations.Add(farmhouse);
-            Locations.Add(farmersField);
-            Locations.Add(bridge);
-            Locations.Add(spiderField);
-        }
-
-        public static Item ItemByID(ItemID id)
-        {
-            foreach (Item item in Items)
-            {
-                if (item.ID == id)
-                {
-                    return item;
-                }
-            }
-
-            return null;
-        }
-
-        public static Monster MonsterByID(MonsterID id)
-        {
-            foreach (Monster monster in Monsters)
-            {
-                if (monster.ID == id)
-                {
-                    return monster;
-                }
-            }
-
-            return null;
-        }
-
-        public static Quest QuestByID(QuestID id)
-        {
-            foreach (Quest quest in Quests)
-            {
-                if (quest.ID == id)
-                {
-                    return quest;
-                }
-            }
-
-            return null;
-        }
-
-        public static Location LocationByID(LocationID id)
-        {
-            foreach (Location location in Locations)
-            {
-                if (location.ID == id)
-                {
-                    return location;
-                }
-            }
-
-            return null;
+            Locations.Add(home.ID, home);
+            Locations.Add(townSquare.ID, townSquare);
+            Locations.Add(guardPost.ID, guardPost);
+            Locations.Add(alchemistHut.ID, alchemistHut);
+            Locations.Add(alchemistsGarden.ID, alchemistsGarden);
+            Locations.Add(farmhouse.ID, farmhouse);
+            Locations.Add(farmersField.ID, farmersField);
+            Locations.Add(bridge.ID, bridge);
+            Locations.Add(spiderField.ID, spiderField);
         }
     }
 }
