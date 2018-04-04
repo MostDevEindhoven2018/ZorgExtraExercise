@@ -46,6 +46,7 @@
     <Compile Include="Items\ItemID.cs" />
     <Compile Include="LivingCreature.cs" />
     <Compile Include="Location.cs" />
+    <Compile Include="LocationID.cs" />
     <Compile Include="LootItem.cs" />
     <Compile Include="Monster.cs" />
     <Compile Include="Player.cs" />
