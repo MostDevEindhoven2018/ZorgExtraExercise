@@ -20,8 +20,6 @@ namespace Engine
         public const int MONSTER_ID_SNAKE = 2;
         public const int MONSTER_ID_GIANT_SPIDER = 3;
 
-        public const int QUEST_ID_CLEAR_ALCHEMIST_GARDEN = 1;
-        public const int QUEST_ID_CLEAR_FARMERS_FIELD = 2;
 
         static World()
         {
@@ -66,7 +64,7 @@ namespace Engine
 
         private static void PopulateQuests()
         {
-            Quest clearAlchemistGarden = new Quest(QUEST_ID_CLEAR_ALCHEMIST_GARDEN, "Clear the alchemist's garden",
+            Quest clearAlchemistGarden = new Quest(QuestID.CLEAR_ALCHEMIST_GARDEN, "Clear the alchemist's garden",
                 "Kill rats in the alchemist's garden and bring back 3 rat tails. You will receive a healing potion and 10 gold pieces.",
                 20, 10);
 
@@ -74,7 +72,7 @@ namespace Engine
 
             clearAlchemistGarden.RewardItem = ItemByID(ItemID.HEALING_POTION);
 
-            Quest clearFarmersField = new Quest(QUEST_ID_CLEAR_FARMERS_FIELD, "Clear the farmer's field",
+            Quest clearFarmersField = new Quest(QuestID.CLEAR_FARMERS_FIELD, "Clear the farmer's field",
                 "Kill snakes in the farmer's field and bring back 3 snake fangs. You will receive an adventurer's pass and 20 gold pieces.",
                 20, 20);
 
@@ -95,7 +93,7 @@ namespace Engine
 
             Location alchemistHut = new Location(LocationID.ALCHEMIST_HUT, "Alchemist's hut",
                 "There are many strange plants on the shelves.");
-            alchemistHut.QuestAvailableHere = QuestByID(QUEST_ID_CLEAR_ALCHEMIST_GARDEN);
+            alchemistHut.QuestAvailableHere = QuestByID(QuestID.CLEAR_ALCHEMIST_GARDEN);
 
             Location alchemistsGarden = new Location(LocationID.ALCHEMISTS_GARDEN, "Alchemist's garden",
                 "Many plants are growing here.");
@@ -103,7 +101,7 @@ namespace Engine
 
             Location farmhouse = new Location(LocationID.FARMHOUSE, "Farmhouse",
                 "There is a small farmhouse, with a farmer in front.");
-            farmhouse.QuestAvailableHere = QuestByID(QUEST_ID_CLEAR_FARMERS_FIELD);
+            farmhouse.QuestAvailableHere = QuestByID(QuestID.CLEAR_FARMERS_FIELD);
 
             Location farmersField = new Location(LocationID.FARM_FIELD, "Farmer's field",
                 "You see rows of vegetables growing here.");
@@ -181,7 +179,7 @@ namespace Engine
             return null;
         }
 
-        public static Quest QuestByID(int id)
+        public static Quest QuestByID(QuestID id)
         {
             foreach (Quest quest in Quests)
             {
