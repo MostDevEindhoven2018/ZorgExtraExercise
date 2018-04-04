@@ -26,6 +26,16 @@ namespace SuperAdventure
             lbl_gold.Text = _player.Gold.ToString();
             lbl_exp.Text = _player.Experience.ToString();
             lbl_lvl.Text = _player.Level.ToString();
+
+            { //example lines
+                _player.Inventory.Add(new InventoryItem(new Item(1, "itemName", "itemNames"), 1));
+                _player.Inventory.Add(new InventoryItem(new Item(1, "otheritemName", "itemNames"), 4));
+            }
+            cbo_potions.DataSource = _player.Inventory;
+
+            { //example line
+                _player.Inventory.Add(new InventoryItem(new HealingPotion(1, "hp pot", "hp_pots", 5), 1));
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
