@@ -11,10 +11,15 @@ namespace Engine
         public Item details { get; set; }
         public int quantity { get; set; }
 
-        public InventoryItem(Item detals, int quantity)
+        public InventoryItem(Item details, int quantity)
         {
             this.details = details;
             this.quantity = quantity;
+        }
+
+        public override string ToString()
+        {
+            return details.Name + ": " + quantity;
         }
     }
 }
