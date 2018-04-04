@@ -35,7 +35,7 @@ namespace SuperAdventure
             cbo_potions.DataSource = _player.Inventory;
 
             { //example line
-                _player.Inventory.Add(new InventoryItem(new HealingPotion(ItemID.ITEM_ID_HEALING_POTION, "hp_pot", "hp_pots", 5), 1));
+                _player.Inventory.Add(new InventoryItem(new HealingPotion(ItemID.HEALING_POTION, "hp_pot", "hp_pots", 5), 1));
             }
         }
 
