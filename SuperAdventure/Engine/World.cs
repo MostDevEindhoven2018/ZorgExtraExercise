@@ -4,6 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
+using System.Threading.Tasks;
+using System.IO;
+using System.Threading;
+using Newtonsoft.Json.Linq;
 
 namespace Engine
 {
@@ -18,6 +23,7 @@ namespace Engine
         {
             PopulateItems();
             PopulateMonsters();
+            LoadGeneratedMonsters();
             PopulateQuests();
             PopulateLocations();
         }
@@ -164,6 +170,23 @@ namespace Engine
             Locations.Add(farmersField.ID, farmersField);
             Locations.Add(bridge.ID, bridge);
             Locations.Add(spiderField.ID, spiderField);
+        }
+
+        public static void LoadGeneratedMonsters()
+        {
+            string url = "https://jsonplaceholder.typicode.com/photos";
+
+            System.Net.WebClient wc = new System.Net.WebClient();
+            byte[] raw = wc.DownloadData(url);
+
+            string webData = System.Text.Encoding.UTF8.GetString(raw);
+            JArray photos = JArray.Parse(webData);
+            
+            foreach(var item in photos)
+            {
+                var e = item.SelectToken("id");
+                Console.WriteLine(e);
+            }
         }
     }
 }

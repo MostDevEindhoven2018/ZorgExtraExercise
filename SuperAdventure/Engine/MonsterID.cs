@@ -6,5 +6,6 @@
         RAT = 1,
         SNAKE = 2,
         GIANT_SPIDER = 3,
+        GENERATED = 4,
     }
 }

@@ -41,6 +41,8 @@ namespace SuperAdventure
                 _player.Inventory.Add(new InventoryItem(new HealingPotion(ItemID.HEALING_POTION, "hp_pot", "hp_pots", 5), 1));
                 _player.Gold += 5;
             }
+
+            World.LoadGeneratedMonsters();
         }
 
         private void button2_Click(object sender, EventArgs e)
