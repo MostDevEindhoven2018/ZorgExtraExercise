@@ -27,6 +27,9 @@ namespace SuperAdventure
             lbl_gold.Text = _player.Gold.ToString();
             lbl_exp.Text = _player.Experience.ToString();
             lbl_lvl.Text = _player.Level.ToString();
+            _player.GoldChanged += (gold) => lbl_gold.Text = gold.ToString();
+            _player.ExperienceChanged += (experience) => lbl_gold.Text = experience.ToString();
+            _player.LevelChanged += (level) => lbl_gold.Text = level.ToString();
 
             { //example lines
                 _player.Inventory.Add(new InventoryItem(new Item(ItemID.INVALID, "itemName", "itemNames"), 1));
@@ -36,6 +39,7 @@ namespace SuperAdventure
 
             { //example line
                 _player.Inventory.Add(new InventoryItem(new HealingPotion(ItemID.HEALING_POTION, "hp_pot", "hp_pots", 5), 1));
+                _player.Gold += 5;
             }
         }
 

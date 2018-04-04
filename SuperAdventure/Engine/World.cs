@@ -53,7 +53,6 @@ namespace Engine
 
             item = (new Item(ItemID.ADVENTURER_PASS, "Adventurer pass", "Adventurer passes"));
             Items.Add(item.ID, item);
-
         }
 
 
@@ -68,7 +67,7 @@ namespace Engine
             snake.LootTable.Add(new LootItem(Items[(ItemID.SNAKESKIN)], 75, true));
 
             Monster giantSpider = new Monster(MonsterID.GIANT_SPIDER, "Giant spider", 20, 5, 40, 10, 10);
-            giantSpider.LootTable.Add(new LootItem(Items[(ItemID.SPIDER_FANG)], 75, true));
+            giantSpider.LootTable.Add(new LootItem(Items[ItemID.SPIDER_FANG], 75, true));
             giantSpider.LootTable.Add(new LootItem(Items[(ItemID.SPIDER_SILK)], 25, false));
 
             Monsters.Add(rat.ID, rat);
