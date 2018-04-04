@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Engine;
+using Engine.Items;
 
 namespace SuperAdventure
 {
@@ -28,13 +29,13 @@ namespace SuperAdventure
             lbl_lvl.Text = _player.Level.ToString();
 
             { //example lines
-                _player.Inventory.Add(new InventoryItem(new Item(1, "itemName", "itemNames"), 1));
-                _player.Inventory.Add(new InventoryItem(new Item(1, "otheritemName", "itemNames"), 4));
+                _player.Inventory.Add(new InventoryItem(new Item(ItemID.Invalid, "itemName", "itemNames"), 1));
+                _player.Inventory.Add(new InventoryItem(new Item(ItemID.Invalid, "otheritemName", "itemNames"), 4));
             }
             cbo_potions.DataSource = _player.Inventory;
 
             { //example line
-                _player.Inventory.Add(new InventoryItem(new HealingPotion(1, "hp pot", "hp_pots", 5), 1));
+                _player.Inventory.Add(new InventoryItem(new HealingPotion(ItemID.ITEM_ID_HEALING_POTION, "hp_pot", "hp_pots", 5), 1));
             }
         }
 

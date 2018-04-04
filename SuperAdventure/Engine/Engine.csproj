@@ -39,10 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HealingPotion.cs" />
+    <Compile Include="Items\HealingPotion.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="InventoryItem.cs" />
-    <Compile Include="Item.cs" />
+    <Compile Include="Items\Item.cs" />
+    <Compile Include="Items\ItemID.cs" />
     <Compile Include="LivingCreature.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="LootItem.cs" />
@@ -53,9 +54,10 @@
     <Compile Include="Quest.cs" />
     <Compile Include="QuestCompletionItem.cs" />
     <Compile Include="RandomNumberGenerator.cs" />
-    <Compile Include="Weapon.cs" />
+    <Compile Include="Items\Weapon.cs" />
     <Compile Include="World.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
