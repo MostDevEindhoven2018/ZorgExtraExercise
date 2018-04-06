@@ -8,8 +8,11 @@ namespace Engine
 {
     public class LivingCreature
     {
-        public int MaxHitPoints { get; set; }
+        private int _maxHitPoints;
+        public int MaxHitPoints { get { return _maxHitPoints; }; set { _maxHitPoints = value; HitPointsChanged?.Invoke(value); }; }
         public int CurrentHitPoints { get; set; }
+
+        public event Action<int> HitPointsChanged;
 
         public LivingCreature(int currentHitPoints, int maximumHitPoints)
         {

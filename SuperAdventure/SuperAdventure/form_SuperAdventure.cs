@@ -19,8 +19,6 @@ namespace SuperAdventure
         {
             InitializeComponent();
 
-            Location location = new Location(LocationID.INVALID, "Home", "This is your house.");
-            
             _player = new Player(10, 10, 20, 0, 1);
 
             lbl_hitPoints.Text = _player.CurrentHitPoints.ToString();
@@ -30,6 +28,7 @@ namespace SuperAdventure
             _player.GoldChanged += (gold) => lbl_gold.Text = gold.ToString();
             _player.ExperienceChanged += (experience) => lbl_gold.Text = experience.ToString();
             _player.LevelChanged += (level) => lbl_gold.Text = level.ToString();
+            _player.HitPointsChanged += (hp) => lbl_hitPoints.Text = hp.ToString();
 
             { //example lines
                 _player.Inventory.Add(new InventoryItem(new Item(ItemID.INVALID, "itemName", "itemNames"), 1));

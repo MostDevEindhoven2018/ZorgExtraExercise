@@ -147,7 +147,7 @@
             // 
             this.cbo_Weapons.FormattingEnabled = true;
             this.cbo_Weapons.Location = new System.Drawing.Point(492, 688);
-            this.cbo_Weapons.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbo_Weapons.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_Weapons.Name = "cbo_Weapons";
             this.cbo_Weapons.Size = new System.Drawing.Size(160, 24);
             this.cbo_Weapons.TabIndex = 9;
@@ -156,7 +156,7 @@
             // 
             this.cbo_potions.FormattingEnabled = true;
             this.cbo_potions.Location = new System.Drawing.Point(492, 730);
-            this.cbo_potions.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbo_potions.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_potions.Name = "cbo_potions";
             this.cbo_potions.Size = new System.Drawing.Size(160, 24);
             this.cbo_potions.TabIndex = 10;
@@ -164,7 +164,7 @@
             // btn_useWeapon
             // 
             this.btn_useWeapon.Location = new System.Drawing.Point(827, 688);
-            this.btn_useWeapon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_useWeapon.Margin = new System.Windows.Forms.Padding(4);
             this.btn_useWeapon.Name = "btn_useWeapon";
             this.btn_useWeapon.Size = new System.Drawing.Size(100, 28);
             this.btn_useWeapon.TabIndex = 11;
@@ -174,7 +174,7 @@
             // btn_usePotion
             // 
             this.btn_usePotion.Location = new System.Drawing.Point(827, 730);
-            this.btn_usePotion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_usePotion.Margin = new System.Windows.Forms.Padding(4);
             this.btn_usePotion.Name = "btn_usePotion";
             this.btn_usePotion.Size = new System.Drawing.Size(100, 28);
             this.btn_usePotion.TabIndex = 12;
@@ -185,7 +185,7 @@
             // btn_north
             // 
             this.btn_north.Location = new System.Drawing.Point(657, 533);
-            this.btn_north.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_north.Margin = new System.Windows.Forms.Padding(4);
             this.btn_north.Name = "btn_north";
             this.btn_north.Size = new System.Drawing.Size(100, 28);
             this.btn_north.TabIndex = 13;
@@ -195,7 +195,7 @@
             // btn_east
             // 
             this.btn_east.Location = new System.Drawing.Point(764, 562);
-            this.btn_east.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_east.Margin = new System.Windows.Forms.Padding(4);
             this.btn_east.Name = "btn_east";
             this.btn_east.Size = new System.Drawing.Size(100, 28);
             this.btn_east.TabIndex = 14;
@@ -205,7 +205,7 @@
             // btn_south
             // 
             this.btn_south.Location = new System.Drawing.Point(657, 599);
-            this.btn_south.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_south.Margin = new System.Windows.Forms.Padding(4);
             this.btn_south.Name = "btn_south";
             this.btn_south.Size = new System.Drawing.Size(100, 28);
             this.btn_south.TabIndex = 15;
@@ -215,7 +215,7 @@
             // btn_west
             // 
             this.btn_west.Location = new System.Drawing.Point(549, 562);
-            this.btn_west.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_west.Margin = new System.Windows.Forms.Padding(4);
             this.btn_west.Name = "btn_west";
             this.btn_west.Size = new System.Drawing.Size(100, 28);
             this.btn_west.TabIndex = 16;
@@ -225,7 +225,7 @@
             // rtb_location
             // 
             this.rtb_location.Location = new System.Drawing.Point(463, 23);
-            this.rtb_location.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rtb_location.Margin = new System.Windows.Forms.Padding(4);
             this.rtb_location.Name = "rtb_location";
             this.rtb_location.ReadOnly = true;
             this.rtb_location.Size = new System.Drawing.Size(479, 128);
@@ -235,7 +235,7 @@
             // rtb_messages
             // 
             this.rtb_messages.Location = new System.Drawing.Point(463, 160);
-            this.rtb_messages.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rtb_messages.Margin = new System.Windows.Forms.Padding(4);
             this.rtb_messages.Name = "rtb_messages";
             this.rtb_messages.ReadOnly = true;
             this.rtb_messages.Size = new System.Drawing.Size(479, 351);
@@ -251,7 +251,7 @@
             this.dgv_inventory.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgv_inventory.Enabled = false;
             this.dgv_inventory.Location = new System.Drawing.Point(21, 160);
-            this.dgv_inventory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgv_inventory.Margin = new System.Windows.Forms.Padding(4);
             this.dgv_inventory.MultiSelect = false;
             this.dgv_inventory.Name = "dgv_inventory";
             this.dgv_inventory.ReadOnly = true;
@@ -268,7 +268,7 @@
             this.dgv_quests.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgv_quests.Enabled = false;
             this.dgv_quests.Location = new System.Drawing.Point(21, 549);
-            this.dgv_quests.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgv_quests.Margin = new System.Windows.Forms.Padding(4);
             this.dgv_quests.MultiSelect = false;
             this.dgv_quests.Name = "dgv_quests";
             this.dgv_quests.ReadOnly = true;
@@ -302,7 +302,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "form_SuperAdventure";
             this.Text = "Super Adventure";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_inventory)).EndInit();
