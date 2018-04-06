@@ -9,18 +9,18 @@ namespace Engine
 {
     public class InventoryItem
     {
-        public Item details { get; set; }
-        public int quantity { get; set; }
+        public Item Details { get; set; }
+        public int Quantity { get; set; }
 
         public InventoryItem(Item details, int quantity)
         {
-            this.details = details;
-            this.quantity = quantity;
+            this.Details = details;
+            this.Quantity = quantity;
         }
 
         public override string ToString()
         {
-            return details.Name + ": " + quantity;
+            return Details.Name + ": " + Quantity;
         }
     }
 }

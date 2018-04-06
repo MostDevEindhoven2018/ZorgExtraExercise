@@ -32,7 +32,6 @@ namespace SuperAdventure
 
             dgv_inventory.DataSource = _player.Inventory;
             dgv_quests.DataSource = _player.Quests;
-            cbo_potions.DataSource = _player.Inventory;
 
 
             { //example lines
@@ -52,6 +51,7 @@ namespace SuperAdventure
             }
 
             cbo_Weapons_Click(null, null);
+            cbo_potions_Click(null, null);
             rtb_location.Text = World.Locations[LocationID.HOME].Description;
         }
 
@@ -62,12 +62,29 @@ namespace SuperAdventure
 
         private void cbo_Weapons_SelectedIndexChanged(object sender, EventArgs e)
         {
-            rtb_messages.Text += "Equiped a " + ((InventoryItem) cbo_Weapons.SelectedItem).details.Name + "\n";
+            Item details = ((InventoryItem)cbo_Weapons.SelectedItem).Details;
+            rtb_messages.Text += "Equiped a " + details.Name + "\n";
         }
 
         private void cbo_Weapons_Click(object sender, EventArgs e)
         {
-            cbo_Weapons.DataSource = new List<InventoryItem>(_player.Inventory.Where((a) => a.details is Weapon));
+            cbo_Weapons.DataSource = new List<InventoryItem>(_player.Inventory.Where((a) => a.Details is Weapon));
+        }
+
+        private void cbo_potions_Click(object sender, EventArgs e)
+        {
+            cbo_potions.DataSource = new List<InventoryItem>(_player.Inventory.Where((a) => a.Details is HealingPotion));
+        }
+
+        private void cbo_potions_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            Item selectedPotion = ((InventoryItem)cbo_Weapons.SelectedItem).Details;
+            rtb_messages.Text += "Equiped a " + selectedPotion.Name + "\n";
+        }
+
+        private void btn_useWeapon_Click(object sender, EventArgs e)
+        {
+            _player.Inventory.Add(new InventoryItem(World.Items[ItemID.CLUB], 1));
         }
     }
 }

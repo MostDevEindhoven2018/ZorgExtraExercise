@@ -162,6 +162,8 @@
             this.cbo_potions.Name = "cbo_potions";
             this.cbo_potions.Size = new System.Drawing.Size(160, 24);
             this.cbo_potions.TabIndex = 10;
+            this.cbo_potions.SelectionChangeCommitted += new System.EventHandler(this.cbo_potions_SelectionChangeCommitted);
+            this.cbo_potions.Click += new System.EventHandler(this.cbo_potions_Click);
             // 
             // btn_useWeapon
             // 
@@ -172,6 +174,7 @@
             this.btn_useWeapon.TabIndex = 11;
             this.btn_useWeapon.Text = "Use";
             this.btn_useWeapon.UseVisualStyleBackColor = true;
+            this.btn_useWeapon.Click += new System.EventHandler(this.btn_useWeapon_Click);
             // 
             // btn_usePotion
             // 
