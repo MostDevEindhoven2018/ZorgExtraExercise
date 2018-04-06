@@ -16,16 +16,24 @@ namespace Engine
     {
         public static readonly Dictionary<ItemID, Item> Items = new Dictionary<ItemID, Item>();
         public static readonly Dictionary<MonsterID, Monster> Monsters = new Dictionary<MonsterID, Monster>();
+        private static readonly List<Monster> _randomMonsters = new List<Monster>();
+        private static Task loadRandMonstersTask;
+        public static List<Monster> RandomMonsters { get {
+                loadRandMonstersTask?.Wait();
+                return _randomMonsters;
+            } }
         public static readonly Dictionary<QuestID, Quest> Quests = new Dictionary<QuestID, Quest>();
         public static readonly Dictionary<LocationID, Location> Locations = new Dictionary<LocationID, Location>();
 
-        static World()
+        public static void InitWorld()
         {
             PopulateItems();
             PopulateMonsters();
-            LoadGeneratedMonsters();
             PopulateQuests();
             PopulateLocations();
+            loadRandMonstersTask = Task.Run(LoadGeneratedMonsters);
+            Console.WriteLine(_randomMonsters.Count);
+            Console.WriteLine(RandomMonsters.Count);
         }
 
         private static void PopulateItems()
@@ -60,7 +68,6 @@ namespace Engine
             item = (new Item(ItemID.ADVENTURER_PASS, "Adventurer pass", "Adventurer passes"));
             Items.Add(item.ID, item);
         }
-
 
         private static void PopulateMonsters()
         {
@@ -172,21 +179,28 @@ namespace Engine
             Locations.Add(spiderField.ID, spiderField);
         }
 
-        public static void LoadGeneratedMonsters()
+        public async static Task LoadGeneratedMonsters()
         {
+            //Console.WriteLine("test");
             string url = "https://jsonplaceholder.typicode.com/photos";
 
             System.Net.WebClient wc = new System.Net.WebClient();
-            byte[] raw = wc.DownloadData(url);
+            byte[] raw = await (wc.DownloadDataTaskAsync(url));
 
             string webData = System.Text.Encoding.UTF8.GetString(raw);
             JArray photos = JArray.Parse(webData);
+            //Console.WriteLine("test");
             
-            foreach(var item in photos)
+            foreach (var item in photos)
             {
-                var e = item.SelectToken("id");
-                Console.WriteLine(e);
+                var idToken = item.SelectToken("id");
+                var titleToken = item.SelectToken("title");
+                //Console.WriteLine(e);
+                int id = Int32.Parse(idToken.ToString());
+                _randomMonsters.Add(new Monster(MonsterID.GENERATED, titleToken.ToString(), 10, 10, 10, 10, 10));
             }
+
+            Console.WriteLine(_randomMonsters.Count);
         }
     }
 }

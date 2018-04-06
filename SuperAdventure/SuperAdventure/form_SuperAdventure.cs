@@ -42,7 +42,7 @@ namespace SuperAdventure
                 _player.Gold += 5;
             }
 
-            World.LoadGeneratedMonsters();
+            World.InitWorld();
         }
 
         private void button2_Click(object sender, EventArgs e)
