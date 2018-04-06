@@ -40,19 +40,34 @@ namespace SuperAdventure
                 _player.Inventory.Add(new InventoryItem(new Item(ItemID.INVALID, "otheritemName", "itemNames"), 4));
             }
             
-            { //example line
-                _player.Inventory.Add(new InventoryItem(new HealingPotion(ItemID.HEALING_POTION, "hp_pot", "hp_pots", 5), 1));
-                _player.Gold += 5;
-            }
 
             World.InitWorld();
 
+
+            { //example line
+                _player.Inventory.Add(new InventoryItem(new HealingPotion(ItemID.HEALING_POTION, "hp_pot", "hp_pots", 5), 1));
+                _player.Gold += 5;
+                _player.Inventory.Add(new InventoryItem(World.Items[ItemID.CLUB], 1));
+                _player.Inventory.Add(new InventoryItem(World.Items[ItemID.RUSTY_SWORD], 1));
+            }
+
+            cbo_Weapons_Click(null, null);
             rtb_location.Text = World.Locations[LocationID.HOME].Description;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void cbo_Weapons_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            rtb_messages.Text += "Equiped a " + ((InventoryItem) cbo_Weapons.SelectedItem).details.Name + "\n";
+        }
+
+        private void cbo_Weapons_Click(object sender, EventArgs e)
+        {
+            cbo_Weapons.DataSource = new List<InventoryItem>(_player.Inventory.Where((a) => a.details is Weapon));
         }
     }
 }
