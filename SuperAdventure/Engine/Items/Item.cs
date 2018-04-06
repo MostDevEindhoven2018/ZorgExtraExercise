@@ -18,5 +18,10 @@ namespace Engine.Items
             Name = name;
             NamePlural = namePlural;
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

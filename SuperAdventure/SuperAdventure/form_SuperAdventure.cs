@@ -30,18 +30,24 @@ namespace SuperAdventure
             _player.LevelChanged += (level) => lbl_gold.Text = level.ToString();
             _player.HitPointsChanged += (hp) => lbl_hitPoints.Text = hp.ToString();
 
+            dgv_inventory.DataSource = _player.Inventory;
+            dgv_quests.DataSource = _player.Quests;
+            cbo_potions.DataSource = _player.Inventory;
+
+
             { //example lines
                 _player.Inventory.Add(new InventoryItem(new Item(ItemID.INVALID, "itemName", "itemNames"), 1));
                 _player.Inventory.Add(new InventoryItem(new Item(ItemID.INVALID, "otheritemName", "itemNames"), 4));
             }
-            cbo_potions.DataSource = _player.Inventory;
-
+            
             { //example line
                 _player.Inventory.Add(new InventoryItem(new HealingPotion(ItemID.HEALING_POTION, "hp_pot", "hp_pots", 5), 1));
                 _player.Gold += 5;
             }
 
             World.InitWorld();
+
+            rtb_location.Text = World.Locations[LocationID.HOME].Description;
         }
 
         private void button2_Click(object sender, EventArgs e)
